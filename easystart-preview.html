@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw EasyStart Desktop Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #e0e0e0;
+        }
+
+        .desktop-window {
+            width: 100%;
+            max-width: 1200px;
+            height: 90vh;
+            background: #0a0a1a;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 217, 255, 0.1), 0 0 40px rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        /* Title Bar */
+        .title-bar {
+            background: linear-gradient(90deg, #0f0f2e 0%, #1a0a3e 100%);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.15);
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 45px;
+            user-select: none;
+        }
+
+        .title-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .app-icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #00d9ff 0%, #0099cc 100%);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #0a0a1a;
+            font-size: 12px;
+        }
+
+        .app-title {
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: #00d9ff;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .control-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            background: #555;
+        }
+
+        .control-btn:hover {
+            width: 14px;
+            height: 14px;
+        }
+
+        .control-minimize {
+            background: #ffbd2e;
+        }
+
+        .control-maximize {
+            background: #27c93f;
+        }
+
+        .control-close {
+            background: #ff5f56;
+        }
+
+        /* Main Container */
+        .main-container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 70px;
+            background: linear-gradient(180deg, #0f0f2e 0%, #1a0a3e 100%);
+            border-right: 1px solid rgba(0, 217, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 16px 0;
+            gap: 16px;
+        }
+
+        .nav-item {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+            background: transparent;
+            color: #888;
+            font-size: 24px;
+            position: relative;
+        }
+
+        .nav-item:hover {
+            background: rgba(0, 217, 255, 0.1);
+            color: #00d9ff;
+        }
+
+        .nav-item.active {
+            background: rgba(0, 217, 255, 0.2);
+            border-color: rgba(0, 217, 255, 0.5);
+            color: #00d9ff;
+            box-shadow: inset 0 0 20px rgba(0, 217, 255, 0.1);
+        }
+
+        .nav-label {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+            font-weight: 500;
+        }
+
+        .status-indicator {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            margin-top: auto;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            background: rgba(0, 217, 255, 0.05);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4ade80;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 8px rgba(74, 222, 128, 0.8); }
+            50% { box-shadow: 0 0 4px rgba(74, 222, 128, 0.4); }
+        }
+
+        .status-text {
+            font-size: 7px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #4ade80;
+            font-weight: 600;
+        }
+
+        /* Content Area */
+        .content-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .tab-content {
+            display: none;
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px;
+        }
+
+        .tab-content.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Scrollbar styling */
+        .tab-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .tab-content::-webkit-scrollbar-track {
+            background: rgba(0, 217, 255, 0.05);
+        }
+
+        .tab-content::-webkit-scrollbar-thumb {
+            background: rgba(0, 217, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        .tab-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 217, 255, 0.5);
+        }
+
+        /* HOME Tab */
+        .greeting {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #00d9ff 0%, #0099cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .current-date {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 24px;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(0, 153, 204, 0.05) 100%);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: rgba(0, 217, 255, 0.4);
+            box-shadow: 0 8px 24px rgba(0, 217, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #00d9ff;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        .ai-summary-card {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.08) 0%, rgba(0, 153, 204, 0.04) 100%);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            border-left: 4px solid #00d9ff;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .card-title {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #00d9ff;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-title::before {
+            content: '✨';
+            font-size: 16px;
+        }
+
+        .summary-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #d0d0d0;
+            margin-bottom: 16px;
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, #00d9ff 0%, #0099cc 100%);
+            color: #0a0a1a;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 217, 255, 0.3);
+        }
+
+        .action-btn:active {
+            transform: translateY(0);
+        }
+
+        /* EMAIL Tab */
+        .email-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            height: 100%;
+        }
+
+        .email-list-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            color: #888;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: rgba(0, 217, 255, 0.2);
+            border-color: rgba(0, 217, 255, 0.4);
+            color: #00d9ff;
+        }
+
+        .email-item {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(0, 153, 204, 0.02) 100%);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .email-item:hover {
+            border-color: rgba(0, 217, 255, 0.3);
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.12) 0%, rgba(0, 153, 204, 0.05) 100%);
+        }
+
+        .email-item.active {
+            border-color: #00d9ff;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.15) 0%, rgba(0, 153, 204, 0.08) 100%);
+        }
+
+        .email-sender {
+            font-weight: 600;
+            color: #e0e0e0;
+            margin-bottom: 4px;
+            font-size: 13px;
+        }
+
+        .email-subject {
+            font-size: 13px;
+            color: #aaa;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .email-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .email-time {
+            font-size: 11px;
+            color: #666;
+        }
+
+        .priority-badge {
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .priority-urgent {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ff6b6b;
+        }
+
+        .priority-action {
+            background: rgba(250, 204, 21, 0.2);
+            color: #fcd34d;
+        }
+
+        .priority-fyi {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+        }
+
+        .ai-suggestions-panel {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.08) 0%, rgba(0, 153, 204, 0.04) 100%);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ai-suggestions-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #00d9ff;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ai-suggestions-title::before {
+            content: '🤖';
+            font-size: 16px;
+        }
+
+        .suggested-reply-box {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 217, 255, 0.15);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+            font-size: 12px;
+            line-height: 1.6;
+            color: #c0c0c0;
+            font-family: 'Monaco', 'Courier New', monospace;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .reply-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .reply-btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: 6px;
+            border: none;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            transition: all 0.2s ease;
+        }
+
+        .reply-btn.send {
+            background: linear-gradient(135deg, #00d9ff 0%, #0099cc 100%);
+            color: #0a0a1a;
+        }
+
+        .reply-btn.send:hover {
+            box-shadow: 0 6px 12px rgba(0, 217, 255, 0.3);
+        }
+
+        .reply-btn.edit {
+            background: rgba(0, 217, 255, 0.1);
+            color: #00d9ff;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+        }
+
+        .reply-btn.edit:hover {
+            background: rgba(0, 217, 255, 0.2);
+        }
+
+        .reply-btn.dismiss {
+            background: rgba(100, 100, 100, 0.1);
+            color: #999;
+            border: 1px solid rgba(100, 100, 100, 0.2);
+        }
+
+        .reply-btn.dismiss:hover {
+            background: rgba(100, 100, 100, 0.2);
+        }
+
+        /* CALENDAR Tab */
+        .calendar-container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 24px;
+            height: 100%;
+        }
+
+        .week-view {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(0, 153, 204, 0.02) 100%);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        .week-grid {
+            display: grid;
+            grid-template-columns: 80px repeat(5, 1fr);
+            gap: 12px;
+            min-width: 100%;
+        }
+
+        .time-slot {
+            font-size: 11px;
+            color: #666;
+            font-weight: 500;
+            padding: 8px 0;
+        }
+
+        .day-column {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            min-height: 400px;
+        }
+
+        .day-header {
+            font-size: 12px;
+            font-weight: 600;
+            color: #00d9ff;
+            padding: 8px;
+            text-align: center;
+            background: rgba(0, 217, 255, 0.1);
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+
+        .event-block {
+            background: linear-gradient(135deg, #00d9ff 0%, #0099cc 100%);
+            color: #0a0a1a;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .event-block:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 217, 255, 0.3);
+        }
+
+        .event-block.secondary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .event-block.tertiary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .ai-recommendation-card {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.08) 0%, rgba(0, 153, 204, 0.04) 100%);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            border-left: 4px solid #00d9ff;
+            border-radius: 12px;
+            padding: 16px;
+            height: fit-content;
+        }
+
+        .ai-rec-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #00d9ff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .ai-rec-text {
+            font-size: 12px;
+            line-height: 1.6;
+            color: #c0c0c0;
+        }
+
+        /* SETTINGS Tab */
+        .settings-container {
+            max-width: 600px;
+        }
+
+        .settings-section {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(0, 153, 204, 0.02) 100%);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #00d9ff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        .account-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+        }
+
+        .account-item:last-child {
+            border-bottom: none;
+        }
+
+        .account-name {
+            font-size: 13px;
+            color: #e0e0e0;
+            font-weight: 500;
+        }
+
+        .account-status {
+            font-size: 12px;
+            color: #4ade80;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .account-status::before {
+            content: '✓';
+            font-weight: bold;
+        }
+
+        .slider-container {
+            margin: 20px 0;
+        }
+
+        .slider-label {
+            font-size: 13px;
+            color: #e0e0e0;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .slider {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: linear-gradient(90deg, rgba(0, 217, 255, 0.2) 0%, rgba(0, 217, 255, 0.4) 50%, rgba(0, 217, 255, 0.2) 100%);
+            -webkit-appearance: none;
+            appearance: none;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d9ff 0%, #0099cc 100%);
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 217, 255, 0.4);
+        }
+
+        .slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d9ff 0%, #0099cc 100%);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0, 217, 255, 0.4);
+        }
+
+        .slider-values {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            font-weight: 500;
+        }
+
+        .plan-display {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(0, 153, 204, 0.05) 100%);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .plan-label {
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .plan-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #00d9ff;
+            margin-bottom: 4px;
+        }
+
+        .plan-price {
+            font-size: 13px;
+            color: #aaa;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .email-container {
+                grid-template-columns: 1fr;
+            }
+
+            .calendar-container {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+
+            .week-grid {
+                grid-template-columns: 60px repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .desktop-window {
+                border-radius: 0;
+                height: 100vh;
+            }
+
+            .sidebar {
+                width: 60px;
+                padding: 8px 0;
+                gap: 8px;
+            }
+
+            .nav-item,
+            .status-indicator {
+                width: 45px;
+                height: 45px;
+            }
+
+            .nav-label {
+                display: none;
+            }
+
+            .content-area {
+                padding: 16px;
+            }
+
+            .tab-content {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="desktop-window">
+        <!-- Title Bar -->
+        <div class="title-bar">
+            <div class="title-bar-left">
+                <div class="app-icon">OC</div>
+                <div class="app-title">OpenClaw EasyStart</div>
+            </div>
+            <div class="window-controls">
+                <button class="control-btn control-minimize"></button>
+                <button class="control-btn control-maximize"></button>
+                <button class="control-btn control-close"></button>
+            </div>
+        </div>
+
+        <!-- Main Container -->
+        <div class="main-container">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="nav-item active" data-tab="home">
+                    <span>🏠</span>
+                    <span class="nav-label">Home</span>
+                </div>
+                <div class="nav-item" data-tab="email">
+                    <span>📧</span>
+                    <span class="nav-label">Email</span>
+                </div>
+                <div class="nav-item" data-tab="calendar">
+                    <span>📅</span>
+                    <span class="nav-label">Calendar</span>
+                </div>
+                <div class="nav-item" data-tab="settings">
+                    <span>⚙️</span>
+                    <span class="nav-label">Settings</span>
+                </div>
+                <div class="nav-item" data-tab="activity">
+                    <span>📊</span>
+                    <span class="nav-label">Activity</span>
+                </div>
+
+                <div class="status-indicator">
+                    <div class="status-dot"></div>
+                    <div class="status-text">Connected</div>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- HOME Tab -->
+                <div class="tab-content active" id="home-tab">
+                    <div class="greeting">Good morning, David</div>
+                    <div class="current-date">Today, February 17, 2026</div>
+
+                    <div class="stats-row">
+                        <div class="stat-card">
+                            <div class="stat-number">47</div>
+                            <div class="stat-label">Emails Processed</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">Need Attention</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">Meetings Today</div>
+                        </div>
+                    </div>
+
+                    <div class="ai-summary-card">
+                        <div class="card-title">AI Summary</div>
+                        <div class="summary-text">
+                            You have 12 emails needing responses. 3 are urgent from clients. Your 2pm meeting with Sarah has a conflict with the design review. I've drafted 5 replies for your review.
+                        </div>
+                        <div class="quick-actions">
+                            <button class="action-btn">Review Drafts</button>
+                            <button class="action-btn">Check Calendar</button>
+                            <button class="action-btn">Manage Rules</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EMAIL Tab -->
+                <div class="tab-content" id="email-tab">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; height: 100%; overflow: hidden;">
+                        <div class="email-list-section" style="overflow-y: auto;">
+                            <div class="filter-buttons">
+                                <button class="filter-btn active">All</button>
+                                <button class="filter-btn">Urgent</button>
+                                <button class="filter-btn">Action</button>
+                                <button class="filter-btn">FYI</button>
+                            </div>
+
+                            <div class="email-item active">
+                                <div class="email-sender">Sarah Chen</div>
+                                <div class="email-subject">Project deadline moved to Friday - design review notes</div>
+                                <div class="email-meta">
+                                    <span class="email-time">2:34 PM</span>
+                                    <span class="priority-badge priority-urgent">Urgent</span>
+                                </div>
+                            </div>
+
+                            <div class="email-item">
+                                <div class="email-sender">Marcus Johnson</div>
+                                <div class="email-subject">Q1 Marketing Budget Review - your approval needed</div>
+                                <div class="email-meta">
+                                    <span class="email-time">1:12 PM</span>
+                                    <span class="priority-badge priority-action">Action</span>
+                                </div>
+                            </div>
+
+                            <div class="email-item">
+                                <div class="email-sender">Emily Rodriguez</div>
+                                <div class="email-subject">Team meeting recap and action items summary</div>
+                                <div class="email-meta">
+                                    <span class="email-time">12:45 PM</span>
+                                    <span class="priority-badge priority-fyi">FYI</span>
+                                </div>
+                            </div>
+
+                            <div class="email-item">
+                                <div class="email-sender">David Park</div>
+                                <div class="email-subject">New API integration ready for testing</div>
+                                <div class="email-meta">
+                                    <span class="email-time">11:22 AM</span>
+                                    <span class="priority-badge priority-action">Action</span>
+                                </div>
+                            </div>
+
+                            <div class="email-item">
+                                <div class="email-sender">Lisa Morgan</div>
+                                <div class="email-subject">Weekly status update - all systems operational</div>
+                                <div class="email-meta">
+                                    <span class="email-time">10:05 AM</span>
+                                    <span class="priority-badge priority-fyi">FYI</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ai-suggestions-panel" style="overflow-y: auto;">
+                            <div class="ai-suggestions-title">Suggested Reply</div>
+                            <div class="suggested-reply-box">Hi Sarah,
+
+Thanks for the update. I've reviewed your design notes and they look great. The new timeline works perfectly for us. I'll have feedback on the creative direction by Wednesday EOD.
+
+Looking forward to our 2pm meeting!
+
+Best regards,
+David</div>
+                            <div class="reply-buttons">
+                                <button class="reply-btn send">Send</button>
+                                <button class="reply-btn edit">Edit</button>
+                                <button class="reply-btn dismiss">Dismiss</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CALENDAR Tab -->
+                <div class="tab-content" id="calendar-tab">
+                    <div style="display: grid; grid-template-columns: 1fr 300px; gap: 24px; height: 100%; overflow: hidden;">
+                        <div class="week-view" style="overflow-x: auto;">
+                            <div class="week-grid">
+                                <div style="grid-column: 1;"></div>
+                                <div class="day-header">Mon</div>
+                                <div class="day-header">Tue</div>
+                                <div class="day-header">Wed</div>
+                                <div class="day-header">Thu</div>
+                                <div class="day-header">Fri</div>
+
+                                <div class="time-slot">9:00 AM</div>
+                                <div class="day-column">
+                                    <div class="event-block">Team Standup</div>
+                                </div>
+                                <div class="day-column"></div>
+                                <div class="day-column"></div>
+                                <div class="day-column"></div>
+                                <div class="day-column"></div>
+
+                                <div class="time-slot">11:00 AM</div>
+                                <div class="day-column"></div>
+                                <div class="day-column"></div>
+                                <div class="day-column">
+                                    <div class="event-block secondary">Design Review</div>
+                                </div>
+                                <div class="day-column"></div>
+                                <div class="day-column"></div>
+
+                                <div class="time-slot">2:00 PM</div>
+                                <div class="day-column"></div>
+                                <div class="day-column">
+                                    <div class="event-block tertiary">Meeting w/ Sarah</div>
+                                </div>
+                                <div class="day-column"></div>
+                                <div class="day-column"></div>
+                                <div class="day-column"></div>
+
+                                <div class="time-slot">4:00 PM</div>
+                                <div class="day-column"></div>
+                                <div class="day-column"></div>
+                                <div class="day-column"></div>
+                                <div class="day-column"></div>
+                                <div class="day-column"></div>
+                            </div>
+                        </div>
+
+                        <div class="ai-recommendation-card" style="overflow-y: auto;">
+                            <div class="ai-rec-title">Suggestion</div>
+                            <div class="ai-rec-text">
+                                Block 2–4pm Tuesday for focus time based on your productivity patterns. Your creative work is strongest in afternoon slots.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SETTINGS Tab -->
+                <div class="tab-content" id="settings-tab">
+                    <div class="settings-container">
+                        <div class="settings-section">
+                            <div class="section-title">Connected Accounts</div>
+                            <div class="account-item">
+                                <span class="account-name">Gmail</span>
+                                <span class="account-status">Connected</span>
+                            </div>
+                            <div class="account-item">
+                                <span class="account-name">Google Calendar</span>
+                                <span class="account-status">Connected</span>
+                            </div>
+                            <div class="account-item">
+                                <span class="account-name">OpenAI API</span>
+                                <span class="account-status">Connected</span>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <div class="section-title">Automation Level</div>
+                            <label class="slider-label">AI Assistance Intensity</label>
+                            <input type="range" min="0" max="100" value="50" class="slider" id="automation-slider">
+                            <div class="slider-values">
+                                <span>Suggest Only</span>
+                                <span>Auto-Draft</span>
+                                <span>Full Autopilot</span>
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <div class="section-title">Subscription</div>
+                            <div class="plan-display">
+                                <div class="plan-label">Current Plan</div>
+                                <div class="plan-name">Pro</div>
+                                <div class="plan-price">$0.28 per day</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ACTIVITY Tab -->
+                <div class="tab-content" id="activity-tab">
+                    <div class="greeting">Activity Log</div>
+                    <div class="current-date">Real-time monitoring of all app activities</div>
+
+                    <div class="ai-summary-card">
+                        <div class="card-title">Today's Activity</div>
+                        <div class="summary-text">
+                            <div style="margin-bottom: 12px;">✓ <strong>9:15 AM</strong> — Processed 47 emails through AI filter</div>
+                            <div style="margin-bottom: 12px;">✓ <strong>11:30 AM</strong> — Generated 5 email draft responses</div>
+                            <div style="margin-bottom: 12px;">✓ <strong>1:45 PM</strong> — Detected calendar conflict: Design Review vs. Client Meeting</div>
+                            <div style="margin-bottom: 12px;">✓ <strong>2:00 PM</strong> — Automated rule triggered: "Client emails" → Priority inbox</div>
+                            <div>✓ <strong>3:22 PM</strong> — Calendar optimization suggestion generated</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab Navigation
+        const navItems = document.querySelectorAll('.nav-item');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+
+                // Remove active class from all nav items
+                navItems.forEach(nav => nav.classList.remove('active'));
+
+                // Add active class to clicked nav item
+                this.classList.add('active');
+
+                // Hide all tabs
+                tabContents.forEach(tab => tab.classList.remove('active'));
+
+                // Show selected tab
+                const selectedTab = document.getElementById(tabName + '-tab');
+                if (selectedTab) {
+                    selectedTab.classList.add('active');
+                }
+            });
+        });
+
+        // Filter buttons in Email tab
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Email item click handler
+        const emailItems = document.querySelectorAll('.email-item');
+        emailItems.forEach(item => {
+            item.addEventListener('click', function() {
+                emailItems.forEach(e => e.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Window controls (visual only)
+        const controlBtns = document.querySelectorAll('.control-btn');
+        controlBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (this.classList.contains('control-close')) {
+                    alert('In a real app, this would close the window.');
+                } else if (this.classList.contains('control-minimize')) {
+                    alert('In a real app, this would minimize the window.');
+                } else if (this.classList.contains('control-maximize')) {
+                    alert('In a real app, this would maximize the window.');
+                }
+            });
+        });
+
+        // Slider interaction
+        const slider = document.getElementById('automation-slider');
+        if (slider) {
+            slider.addEventListener('input', function() {
+                const value = this.value;
+                let label = '';
+                if (value < 33) {
+                    label = 'Suggest Only';
+                } else if (value < 67) {
+                    label = 'Auto-Draft';
+                } else {
+                    label = 'Full Autopilot';
+                }
+                console.log('Automation level set to:', label);
+            });
+        }
+
+        // Add some interactivity to buttons
+        const actionBtns = document.querySelectorAll('.action-btn');
+        actionBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const text = this.textContent;
+                console.log('Action clicked:', text);
+            });
+        });
+
+        const replyBtns = document.querySelectorAll('.reply-btn');
+        replyBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const text = this.textContent;
+                if (text.includes('Send')) {
+                    console.log('Reply sent!');
+                } else if (text.includes('Edit')) {
+                    console.log('Edit reply');
+                } else if (text.includes('Dismiss')) {
+                    console.log('Reply dismissed');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

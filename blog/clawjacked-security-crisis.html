@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClawJacked Security Crisis: Critical WebSocket Vulnerability Patched</title>
+    <meta name="description" content="ClawJacked vulnerability (CVE-2026-25253) discovered: critical WebSocket flaw allowing full agent takeover via localhost. 18,000+ instances exposed. Patched in 24 hours.">
+    <meta name="keywords" content="ClawJacked, CVE-2026-25253, security, vulnerability, WebSocket, OpenClaw">
+    <meta name="author" content="OpenClaw USA">
+    <meta property="og:title" content="ClawJacked Security Crisis: Critical WebSocket Vulnerability Patched">
+    <meta property="og:description" content="Critical WebSocket vulnerability in OpenClaw allowing full agent takeover via localhost. 18,000+ instances exposed.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="/images/clawjacked-security.jpg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #050510;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #0a0a15;
+            border-bottom: 1px solid #1a1a2e;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff4d2a;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ff4d2a;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .article-header {
+            margin-bottom: 3rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: #ff4d2a;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 0.8;
+        }
+
+        .breadcrumb span {
+            color: #666;
+        }
+
+        .category-tag {
+            display: inline-block;
+            background-color: #ff4d2a;
+            color: #050510;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1.5rem;
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .warning-box {
+            background-color: #2a1a1a;
+            border-left: 4px solid #ff4d2a;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+        }
+
+        .warning-box strong {
+            color: #ff4d2a;
+        }
+
+        .article-content {
+            background-color: #0a0a15;
+            padding: 3rem;
+            border-radius: 8px;
+            line-height: 1.8;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .article-content h2 {
+            font-size: 1.8rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ff4d2a;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .article-content h3 {
+            font-size: 1.3rem;
+            margin-top: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: #e0e0e0;
+            font-weight: 600;
+        }
+
+        .article-content ul, .article-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight {
+            color: #ff4d2a;
+            font-weight: 600;
+        }
+
+        .code-block {
+            background-color: #000;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #00ff00;
+        }
+
+        .related-articles {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #1a1a2e;
+        }
+
+        .related-articles h3 {
+            color: #ff4d2a;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .related-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .related-item {
+            padding: 1rem;
+            background-color: #0a0a15;
+            border-radius: 4px;
+            border-left: 3px solid #ff4d2a;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .related-item:hover {
+            transform: translateX(4px);
+            background-color: #141420;
+        }
+
+        .related-item a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .related-item a:hover {
+            color: #ff4d2a;
+        }
+
+        .related-item-meta {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.3rem;
+        }
+
+        footer {
+            background-color: #0a0a15;
+            border-top: 1px solid #1a1a2e;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: #ff4d2a;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #888;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .footer-section a {
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: inline-block;
+            margin-bottom: 0.3rem;
+        }
+
+        .footer-section a:hover {
+            color: #ff4d2a;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #1a1a2e;
+            padding-top: 2rem;
+            text-align: center;
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">OpenClaw USA</a>
+            <div>
+                <a href="/">Home</a>
+                <a href="/blog/">Blog</a>
+                <a href="https://github.com/openclawusa">GitHub</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <article class="container">
+            <div class="article-header">
+                <div class="breadcrumb">
+                    <a href="/blog/">Blog</a>
+                    <span>/</span>
+                    <a href="/">Home</a>
+                </div>
+
+                <span class="category-tag">Security</span>
+
+                <h1>ClawJacked: Critical WebSocket Vulnerability Patched in 24 Hours</h1>
+
+                <div class="article-meta">
+                    <span>📅 March 2026</span>
+                    <span>⏱️ 6 min read</span>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>CRITICAL SECURITY UPDATE:</strong> If you're running OpenClaw versions prior to v2026.3.12, update immediately. CVE-2026-25253 affects WebSocket communication and has exposed 18,000+ instances. Full patch details and remediation steps included below.
+            </div>
+
+            <div class="article-content">
+                <p>On March 18, 2026, the OpenClaw security team disclosed <span class="highlight">CVE-2026-25253</span>, a critical vulnerability in the WebSocket communication layer that could allow attackers to achieve full agent takeover via localhost access. Within hours of public disclosure, a comprehensive patch was released, and the community responded with remarkable speed in applying fixes. This incident reveals both the vulnerability's severity and the maturity of OpenClaw's security infrastructure.</p>
+
+                <h2>The Vulnerability: What Went Wrong</h2>
+
+                <p>The ClawJacked vulnerability stemmed from insufficient authentication validation in OpenClaw's WebSocket handler. The vulnerability allowed attackers with local network access to:</p>
+
+                <ul>
+                    <li>Intercept WebSocket connections between agent processes and the OpenShell runtime</li>
+                    <li>Inject arbitrary commands into agent execution queues</li>
+                    <li>Read sensitive data from agent memory and state</li>
+                    <li>Spawn new agents under attacker control</li>
+                    <li>Access filesystem paths available to the compromised agent process</li>
+                </ul>
+
+                <p>The vulnerability specifically affected localhost (127.0.0.1) connections, which limited exposure to local attackers or compromised systems on the same network. However, the prevalence of shared development environments, containerized deployments, and remote development setups meant that thousands of installations were at risk.</p>
+
+                <h2>Scope of Exposure</h2>
+
+                <p>Security researchers quickly estimated that <span class="highlight">18,000+ OpenClaw instances</span> were exposed by this vulnerability in their current configurations. These instances spanned:</p>
+
+                <ul>
+                    <li><strong>Development environments:</strong> Personal workstations and developer laptops</li>
+                    <li><strong>CI/CD pipelines:</strong> GitHub Actions, GitLab CI, Jenkins environments</li>
+                    <li><strong>Container deployments:</strong> Docker and Kubernetes clusters with inadequate network segmentation</li>
+                    <li><strong>Shared hosting:</strong> Academic and corporate environments with shared compute resources</li>
+                    <li><strong>Staging systems:</strong> Pre-production environments often subject to less rigorous security controls</li>
+                </ul>
+
+                <p>The good news was that the vulnerability required local or network access—it could not be exploited remotely through the internet. This fact, combined with the rapid patching effort, significantly limited real-world exploitation.</p>
+
+                <h2>The Emergency Response</h2>
+
+                <p>Within two hours of the vulnerability disclosure, the OpenClaw maintainers had developed a functional patch. By the 24-hour mark, version <span class="highlight">v2026.3.12</span> was available across all installation channels with full remediation of CVE-2026-25253.</p>
+
+                <p>The patch implemented multiple defense layers:</p>
+
+                <h3>1. Enhanced Authentication</h3>
+
+                <p>WebSocket connections now require cryptographic proof of authorization. Each agent process generates a unique token upon startup, and all WebSocket connections must present this token. This prevents unauthorized clients from establishing connections to agent communication channels.</p>
+
+                <h3>2. Connection Origin Validation</h3>
+
+                <p>WebSocket handlers now verify that connection origins match expected patterns, preventing connection spoofing and reducing the attack surface significantly.</p>
+
+                <h3>3. Memory Isolation</h3>
+
+                <p>Agent state and configuration data are now stored in memory regions protected by process-level access controls, making unauthorized reads more difficult even if WebSocket authentication is bypassed.</p>
+
+                <h2>Mandatory Update: v2026.3.12+</h2>
+
+                <p>The OpenClaw team strongly recommends that all users running versions prior to March 2026.3.12 update immediately. The update process is straightforward:</p>
+
+                <div class="code-block">
+# For npm users
+npm install -g @openclawusa/cli@latest
+
+# For direct binary installations
+curl -fsSL https://install.openclawusa.com | bash
+
+# Verify you're on the patched version
+openclaw --version  # Should show v2026.3.12 or higher
+                </div>
+
+                <p>Organizations running containerized OpenClaw deployments should rebuild their images with the latest base image tags and redeploy immediately.</p>
+
+                <h2>Lessons and Prevention</h2>
+
+                <p>This incident provides important security lessons for anyone deploying AI agent systems:</p>
+
+                <h3>Network Segmentation</h3>
+
+                <p>Even though the vulnerability required local access, organizations deploying OpenClaw in shared environments should implement network segmentation to prevent lateral movement attacks.</p>
+
+                <h3>Security Scanning</h3>
+
+                <p>Regular vulnerability scanning of OpenClaw deployments using tools like SBOM (Software Bill of Materials) analysis can identify vulnerable installations before attackers find them.</p>
+
+                <h3>Monitoring and Logging</h3>
+
+                <p>Comprehensive logging of agent creation, command execution, and WebSocket connections provides visibility into potential compromise attempts.</p>
+
+                <h2>Community Response</h2>
+
+                <p>The incident demonstrated the strength of the OpenClaw community. Within 48 hours of the patch release, 76% of tracked OpenClaw instances had been updated. Security researchers, system administrators, and DevOps teams prioritized patching, and the coordinated response prevented any known successful exploitations of the vulnerability in the wild.</p>
+
+                <p>The OpenClaw Foundation announced that CVE-2026-25253 was the first critical vulnerability in the project's brief history, reflecting the careful security work that went into the initial development. However, the rapid, transparent response to disclosure and the comprehensive nature of the patch reinforced confidence in the project's security practices.</p>
+
+                <h2>Looking Forward</h2>
+
+                <p>The ClawJacked incident resulted in permanent improvements to OpenClaw's security infrastructure, including:</p>
+
+                <ul>
+                    <li>Enhanced automated security testing in CI/CD pipelines</li>
+                    <li>A new security advisory process for coordinated disclosure</li>
+                    <li>Quarterly security audits by third-party firms</li>
+                    <li>A bug bounty program offering rewards for responsibly disclosed vulnerabilities</li>
+                </ul>
+
+                <p>For users and organizations running OpenClaw, the message is clear: update to v2026.3.12 or later immediately, and enable security logging to detect any unusual agent activity. The OpenClaw team remains committed to maintaining the security and integrity of the platform as it continues its explosive growth in production deployments worldwide.</p>
+            </div>
+
+            <div class="related-articles">
+                <h3>Related Articles</h3>
+                <div class="related-list">
+                    <div class="related-item">
+                        <a href="enterprise-adoption-2026.html">2026 Enterprise AI Adoption Reaches Critical Mass</a>
+                        <div class="related-item-meta">March 20, 2026 • 5 min read</div>
+                    </div>
+                    <div class="related-item">
+                        <a href="nvidia-nemoclaw-partnership.html">NVIDIA NemoClaw Partnership: Operating System for Personal AI</a>
+                        <div class="related-item-meta">March 16, 2026 • 5 min read</div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>OpenClaw</h4>
+                <p>OpenClaw is the agent framework that's redefining how AI systems reason, plan, and act. Built for developers, trusted by enterprises.</p>
+                <a href="https://github.com/openclawusa">View on GitHub</a>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <a href="/">Home</a>
+                <a href="/blog/">Blog</a>
+                <a href="https://docs.openclawusa.com">Documentation</a>
+                <a href="https://github.com/openclawusa">GitHub Repository</a>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <a href="https://twitter.com/openclawusa">Twitter</a>
+                <a href="https://discord.gg/openclawusa">Discord</a>
+                <a href="mailto:hello@openclawusa.com">Email</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 OpenClaw USA. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
