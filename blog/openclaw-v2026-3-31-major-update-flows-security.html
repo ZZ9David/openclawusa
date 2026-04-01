@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw v2026.3.31: The Biggest Update Yet — Unified Flows, Tighter Security, and More | OpenClaw USA</title>
+    <meta name="description" content="OpenClaw just dropped v2026.3.31 with unified task management, major security hardening, and new platform support. Here’s what it means for you.">
+    <meta property="og:title" content="OpenClaw v2026.3.31: The Biggest Update Yet — Unified Flows, Tighter Security, and More">
+    <meta property="og:description" content="OpenClaw just dropped v2026.3.31 with unified task management, major security hardening, and new platform support. Here’s what it means for you.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://openclawusa.com/blog/openclaw-v2026-3-31-major-update-flows-security.html">
+    <meta property="og:site_name" content="OpenClaw USA">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="keywords" content="OpenClaw, v2026.3.31, OpenClaw update, ClawHub, unified flows, AI agent security, OpenClaw news">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0a1a; color: #e0e0e0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; line-height: 1.7; }
+        nav { position: sticky; top: 0; background: rgba(10, 10, 26, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0, 217, 255, 0.15); padding: 1rem 2rem; z-index: 100; display: flex; align-items: center; justify-content: space-between; }
+        nav a { color: #00d9ff; text-decoration: none; font-weight: 600; font-size: 1.1rem; }
+        nav a:hover { text-decoration: underline; }
+        .nav-brand { font-size: 1.2rem; font-weight: 700; color: #00d9ff; text-decoration: none; }
+        .container { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+        .article-header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .article-header h1 { font-size: 2.1rem; line-height: 1.3; color: #ffffff; margin-bottom: 1rem; }
+        .article-meta { display: flex; flex-wrap: wrap; gap: 1.2rem; color: #8a8a9a; font-size: 0.9rem; }
+        .article-meta span { display: inline-flex; align-items: center; gap: 0.3rem; }
+        article p { margin-bottom: 1.4rem; font-size: 1.05rem; color: #d0d0d8; }
+        article h2 { font-size: 1.45rem; color: #00d9ff; margin: 2.2rem 0 1rem; }
+        article ul { margin: 0 0 1.4rem 1.5rem; }
+        article li { margin-bottom: 0.5rem; font-size: 1.05rem; color: #d0d0d8; }
+        article strong { color: #ffffff; }
+        .highlight-box { background: rgba(0, 217, 255, 0.06); border-left: 3px solid #00d9ff; padding: 1rem 1.2rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+        .highlight-box p { margin-bottom: 0; }
+        .back-link { display: inline-block; margin-top: 2.5rem; color: #00d9ff; text-decoration: none; font-weight: 500; }
+        .back-link:hover { text-decoration: underline; }
+        .sources { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08); }
+        .sources h3 { font-size: 1rem; color: #8a8a9a; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .sources ul { list-style: none; margin-left: 0; }
+        .sources li { margin-bottom: 0.4rem; }
+        .sources a { color: #00d9ff; text-decoration: none; font-size: 0.92rem; }
+        .sources a:hover { text-decoration: underline; }
+        footer { text-align: center; padding: 2rem; color: #5a5a6a; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05); }
+        @media (max-width: 600px) {
+            .article-header h1 { font-size: 1.6rem; }
+            .container { padding: 1.2rem 1rem 3rem; }
+            nav { padding: 0.8rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a class="nav-brand" href="../index.html">OpenClaw USA</a>
+        <a href="../index.html">Home</a>
+    </nav>
+    <div class="container">
+        <header class="article-header">
+            <h1>OpenClaw v2026.3.31: The Biggest Update Yet — Unified Flows, Tighter Security, and More</h1>
+            <div class="article-meta">
+                <span>By <strong>OpenClaw USA Team</strong></span>
+                <span>April 1, 2026</span>
+                <span>5 min read</span>
+            </div>
+        </header>
+        <article>
+            <p>OpenClaw just released version v2026.3.31, and this is not a routine patch. Dropped on March 31, 2026, this update touches the very core of how OpenClaw manages tasks, enforces security, and connects to the platforms you use every day. If you run OpenClaw — or you’re thinking about setting it up — here’s what you need to know.</p>
+
+            <h2>What Changed and Why It Matters</h2>
+            <p>The headline feature in v2026.3.31 is something the OpenClaw team calls <strong>Unified Flows</strong>. Until now, if you had a scheduled cron job, a background sub-agent, and a command-line task all running at the same time, each one had its own lifecycle and its own way of being managed. That made it difficult to see what your AI agent was actually doing at any given moment.</p>
+            <p>With this release, all of those different task types are brought together under a single system backed by a local SQLite database. You can now run <strong>openclaw flows list</strong>, <strong>openclaw flows show</strong>, or <strong>openclaw flows cancel</strong> to see and control everything your agent is working on from one place. Each “Flow” is composed of individual “Tasks,” giving you a clear picture of what’s running, what’s waiting, and what’s finished.</p>
+            <p>For everyday users, this means less guesswork. If something seems stuck, you can check the status and cancel it. If a task fails, the system now surfaces recovery hints so you know what went wrong and how to fix it.</p>
+
+            <h2>Security Gets a Major Overhaul</h2>
+            <p>After the widely reported wave of nine CVEs disclosed in just four days back in mid-March, it’s no surprise that security is front and center in this release. The update follows one guiding principle: <strong>make implicit trust explicit</strong>. In practical terms, that means OpenClaw will no longer quietly assume that something is safe just because it’s running on your local machine.</p>
+            <p>Here are the most important security changes:</p>
+            <ul>
+                <li><strong>Plugin installs now fail by default</strong> if a critical security finding is detected. You have to explicitly opt in with a special flag to override this — no more silent risk.</li>
+                <li><strong>Gateway authentication is stricter.</strong> The old behavior of trusting any connection from the same machine is gone. Local connections now require a configured token.</li>
+                <li><strong>Node commands require pairing approval.</strong> Simply pairing a device is no longer enough to expose commands — an additional approval step is now required.</li>
+                <li><strong>High-risk shell tools like <code>awk</code> and <code>sed</code> are excluded</strong> from the fast-path trust system, meaning they’ll always require explicit approval before your agent can use them.</li>
+            </ul>
+            <p>These changes may require some adjustments to existing setups, but they directly address the kinds of vulnerabilities that made headlines in March. If you’re running OpenClaw for anything beyond casual experimentation, these guardrails are worth the minor inconvenience.</p>
+
+            <h2>New Platform Support: QQ Bot, LINE Media, Matrix Upgrades</h2>
+            <p>OpenClaw continues to expand the number of platforms it can interact with. The v2026.3.31 release adds a <strong>QQ Bot channel plugin</strong> — a big deal for users who communicate through Tencent’s QQ messenger, which is massively popular in Asia and increasingly relevant for cross-border teams.</p>
+            <p>The QQ Bot integration supports multi-account setup, slash commands, reminders, and full media send/receive. LINE also gets an upgrade with outbound media support for images, video, and audio. And Matrix — the open-source messaging protocol — gains several improvements including optional room history context, draft streaming for partial reply updates, and per-DM thread isolation.</p>
+            <p>Slack and WhatsApp also received targeted improvements. Slack now has native in-channel approval routing for exec commands, and WhatsApp added emoji reaction support for incoming messages. Microsoft Teams picks up Graph-backed member info lookups.</p>
+
+            <h2>Smarter AI and Remote MCP Support</h2>
+            <p>On the AI side, this release introduces remote HTTP/SSE server support for MCP (Model Context Protocol) configurations. This means you can now connect OpenClaw to remote tool servers with authentication headers — expanding what your agent can do without running everything locally.</p>
+            <p>There’s also a new <strong>/btw side question</strong> feature for Anthropic models that lets you ask a quick question during a session without interrupting the agent’s main reasoning flow. And cross-agent memory search now supports extra collections, so agents can draw on sessions from other agents when looking for relevant context.</p>
+
+            <h2>Android Gets Smarter Notifications</h2>
+            <p>If you run OpenClaw with an Android device in the loop, this update adds <strong>notification forwarding</strong> with package filtering, quiet hours, and rate limiting. That means your agent can monitor your phone’s notifications and act on them — but only the ones you choose, and only during hours you set. It’s a thoughtful balance between automation and not being overwhelmed.</p>
+
+            <h2>What You Should Do Now</h2>
+            <div class="highlight-box">
+                <p><strong>If you’re already running OpenClaw:</strong> Update carefully. This release includes several breaking changes, especially around gateway authentication and plugin installs. Review the official release notes before upgrading, and test your existing flows after updating.</p>
+            </div>
+            <p>If you’re new to OpenClaw, this is actually a good time to start. The security improvements in v2026.3.31 make the platform meaningfully safer than it was even two weeks ago, and the unified Flows system makes it much easier to understand what your agent is doing.</p>
+            <p>With over 50 contributors and continued momentum — the project has surpassed 135,000 GitHub stars — OpenClaw is evolving fast. This release shows a team that’s listening to the security community and building the management tools that a maturing platform needs.</p>
+
+            <a class="back-link" href="../index.html">← Back to all articles</a>
+
+            <div class="sources">
+                <h3>Sources</h3>
+                <ul>
+                    <li><a href="https://github.com/openclaw/openclaw/releases/tag/v2026.3.31" target="_blank">OpenClaw v2026.3.31 Official Release Notes — GitHub</a></li>
+                    <li><a href="https://openclawai.io/blog/openclaw-cve-flood-nine-vulnerabilities-four-days-march-2026" target="_blank">Nine CVEs in Four Days: Inside OpenClaw’s March 2026 Vulnerability Flood — OpenClawAI</a></li>
+                    <li><a href="https://nvidianews.nvidia.com/news/nvidia-announces-nemoclaw" target="_blank">NVIDIA Announces NemoClaw for the OpenClaw Community — NVIDIA Newsroom</a></li>
+                    <li><a href="https://www.kdnuggets.com/openclaw-explained-the-free-ai-agent-tool-going-viral-already-in-2026" target="_blank">OpenClaw Explained: The Free AI Agent Tool Going Viral Already in 2026 — KDnuggets</a></li>
+                </ul>
+            </div>
+        </article>
+    </div>
+    <footer>
+        © 2026 OpenClaw USA. All rights reserved.
+    </footer>
+</body>
+</html>
