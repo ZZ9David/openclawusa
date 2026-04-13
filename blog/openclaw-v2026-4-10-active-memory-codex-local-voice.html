@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw v2026.4.10: Active Memory, Native Codex, and Local Voice — What It All Means | OpenClaw USA</title>
+    <meta name="description" content="OpenClaw v2026.4.10 introduces the Active Memory plugin, native Codex integration, and local MLX voice synthesis. Here's what US users need to know about the latest release.">
+    <meta property="og:title" content="OpenClaw v2026.4.10: Active Memory, Native Codex, and Local Voice — What It All Means">
+    <meta property="og:description" content="The latest OpenClaw release adds a memory sub-agent that remembers your preferences automatically, built-in Codex support, and private local voice. Here's what it means for you.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://openclawusa.com/blog/openclaw-v2026-4-10-active-memory-codex-local-voice.html">
+    <meta property="og:site_name" content="OpenClaw USA">
+    <meta name="robots" content="index, follow">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0a1a; color: #d0d0e0; font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.75; }
+        nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,26,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,217,255,0.15); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+        nav a { color: #00d9ff; text-decoration: none; font-weight: 600; font-size: 1.1rem; }
+        nav a:hover { text-decoration: underline; }
+        .container { max-width: 780px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+        .article-meta { margin-bottom: 2rem; border-bottom: 1px solid rgba(0,217,255,0.12); padding-bottom: 1.5rem; }
+        .article-meta h1 { font-size: 2.1rem; color: #ffffff; line-height: 1.25; margin-bottom: 0.75rem; }
+        .article-meta .byline { color: #8888aa; font-size: 0.95rem; }
+        .article-meta .byline span { margin-right: 1.2rem; }
+        article p { margin-bottom: 1.4rem; font-size: 1.05rem; color: #c8c8e0; }
+        article h2 { color: #00d9ff; font-size: 1.45rem; margin: 2.2rem 0 1rem; }
+        article a { color: #00d9ff; text-decoration: underline; }
+        article ul { margin: 0 0 1.4rem 1.5rem; }
+        article ul li { margin-bottom: 0.5rem; color: #c8c8e0; font-size: 1.05rem; }
+        .back-link { display: inline-block; margin-top: 2.5rem; color: #00d9ff; text-decoration: none; font-weight: 600; }
+        .back-link:hover { text-decoration: underline; }
+        .sources { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,217,255,0.12); }
+        .sources h3 { color: #8888aa; font-size: 0.95rem; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .sources ul { list-style: none; margin-left: 0; }
+        .sources ul li { margin-bottom: 0.4rem; font-size: 0.9rem; }
+        .sources ul li a { color: #6688bb; }
+        footer { text-align: center; padding: 2rem; color: #555577; font-size: 0.85rem; border-top: 1px solid rgba(0,217,255,0.08); }
+        @media (max-width: 600px) { .article-meta h1 { font-size: 1.55rem; } .container { padding: 1.5rem 1rem 3rem; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html">OpenClaw USA</a>
+        <a href="../index.html">Home</a>
+    </nav>
+
+    <div class="container">
+        <div class="article-meta">
+            <h1>OpenClaw v2026.4.10: Active Memory, Native Codex, and Local Voice — What It All Means</h1>
+            <div class="byline">
+                <span>By OpenClaw USA Team</span>
+                <span>April 13, 2026</span>
+                <span>5 min read</span>
+            </div>
+        </div>
+
+        <article>
+            <p>Just days after the headline-grabbing "Dreaming" feature landed in v2026.4.9, the OpenClaw team has shipped another major release. Version 2026.4.10 introduces three capabilities that, taken together, mark a significant step toward making AI agents feel less like chatbots and more like genuine personal assistants: the Active Memory plugin, native Codex model support, and local voice synthesis on Mac.</p>
+
+            <p>Here is what each feature does, why it matters, and what US users should keep in mind before flipping the switch.</p>
+
+            <h2>Active Memory: Your Agent Finally Remembers You</h2>
+
+            <p>The biggest addition in this release is the optional Active Memory plugin. In previous versions, OpenClaw could store memories — but only when you explicitly told it to. If you forgot to say "remember that I prefer bullet-point summaries" or "save my flight details," the context was gone by the next conversation.</p>
+
+            <p>Active Memory changes that dynamic entirely. When enabled, it inserts a dedicated memory sub-agent that runs right before the main reply. This sub-agent automatically searches your stored preferences, past decisions, and conversation history, then feeds the most relevant details into the response — all without you having to ask.</p>
+
+            <p>In practical terms, this means your OpenClaw agent can recall that you like morning briefings in a certain format, that your team uses Slack instead of Teams, or that you already discussed a particular project last Tuesday. The result is fewer "sorry, remind me again" moments and more fluid, human-like interactions.</p>
+
+            <p>The plugin ships with three context modes — message, recent, and full — so you can control how deeply the sub-agent digs into your history. There is also a <code>/verbose</code> flag for real-time inspection of what the memory layer is pulling in, which is a welcome transparency feature for privacy-conscious users.</p>
+
+            <p>By default, Active Memory runs in direct-message sessions but stays off in group chats and channels unless you opt in. That is a sensible choice: in a group setting, surfacing one person's private preferences could get awkward fast.</p>
+
+            <h2>Native Codex Support: One Less Setup Headache</h2>
+
+            <p>OpenClaw v2026.4.10 also adds a built-in provider for OpenAI's Codex and GPT-family models. Previously, connecting Codex required a community plugin or manual API configuration. Now it is a first-class option in the model selector, which means fewer steps for users who want to pair OpenClaw's agent framework with OpenAI's reasoning models.</p>
+
+            <p>For US users, this is especially relevant because Codex remains one of the most popular model choices for code-generation and technical workflows. Having it baked in reduces the friction of getting started and lowers the chance of misconfigured API keys or plugin version mismatches — two of the most common complaints on the OpenClaw community forums.</p>
+
+            <h2>Local Voice on Mac via MLX</h2>
+
+            <p>The third notable addition is experimental support for local voice synthesis through Apple's MLX framework on macOS. OpenClaw's Talk Mode has historically relied on cloud-based text-to-speech services, which introduces latency and raises privacy questions about voice data leaving your machine.</p>
+
+            <p>With the new MLX integration, Talk Mode can now run speech synthesis entirely on-device using Apple silicon. The feature is labeled experimental, so expect rough edges — but the direction is clear. Local inference means faster responses, no cloud dependency, and complete privacy for voice interactions.</p>
+
+            <p>This matters in the US market particularly for enterprise and healthcare users who face strict data-handling requirements. An AI agent that can listen, think, and speak without any data leaving the laptop is a much easier sell to compliance teams.</p>
+
+            <h2>Security Hardening: SSRF and Execution Fixes</h2>
+
+            <p>Alongside the headline features, this release includes hardened protections against server-side request forgery (SSRF) and node execution injection — two vulnerability classes that made headlines in OpenClaw's security crisis last month. The team has continued to tighten input validation and sandbox boundaries, which is reassuring given the nine CVEs disclosed in late March.</p>
+
+            <p>If you have been holding off on updating due to security concerns, this release and the rapid patch cadence since then should offer some confidence that the team is treating security as a top priority.</p>
+
+            <h2>Should You Update?</h2>
+
+            <p>For most users, yes. The Active Memory plugin alone is reason enough — it is the kind of quality-of-life improvement that makes daily use noticeably smoother. The Codex integration removes a common setup pain point, and the security fixes address real vulnerabilities.</p>
+
+            <p>The one caveat is that Active Memory is still new, and its behavior in complex, multi-agent workflows has not been extensively tested by the community yet. If you run OpenClaw in a production environment, consider enabling Active Memory in a test channel first and using the <code>/verbose</code> flag to audit what it retrieves before rolling it out widely.</p>
+
+            <p>To update, run <code>npm update -g openclaw</code> or pull the latest Docker image. The Active Memory plugin can be toggled on in your agent's configuration file under the plugins section.</p>
+
+            <div class="sources">
+                <h3>Sources</h3>
+                <ul>
+                    <li><a href="https://github.com/openclaw/openclaw/releases" target="_blank" rel="noopener">OpenClaw GitHub Releases</a></li>
+                    <li><a href="https://docs.openclaw.ai/concepts/active-memory" target="_blank" rel="noopener">OpenClaw Active Memory Documentation</a></li>
+                    <li><a href="https://www.openclawplaybook.ai/blog/openclaw-2026-4-10-release-codex-active-memory/" target="_blank" rel="noopener">OpenClaw Playbook — v2026.4.10 Release Analysis</a></li>
+                    <li><a href="https://www.vibesparking.com/en/blog/engineering/2026-04-11-openclaw-2026-4-10-changelog/" target="_blank" rel="noopener">Vibe Sparking — v2026.4.10 Changelog Deep Dive</a></li>
+                    <li><a href="https://releasebot.io/updates/openclaw" target="_blank" rel="noopener">Releasebot — OpenClaw April 2026 Release Notes</a></li>
+                </ul>
+            </div>
+
+            <a href="../index.html" class="back-link">&larr; Back to all articles</a>
+        </article>
+    </div>
+
+    <footer>
+        &copy; 2026 OpenClaw USA. All rights reserved.
+    </footer>
+</body>
+</html>
