@@ -1,1 +1,198 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microsoft's 'Ocean 11' Team Is Building an OpenClaw-Style Agent for Microsoft 365 | OpenClaw USA</title>
+<meta name="description" content="Microsoft has quietly assembled a small team called 'Ocean 11' to bring OpenClaw-style autonomous agents to Microsoft 365 Copilot. Here's what that means for 400 million enterprise users.">
+<meta property="og:title" content="Microsoft's 'Ocean 11' Team Is Building an OpenClaw-Style Agent for Microsoft 365">
+<meta property="og:description" content="A small team led by former Word chief Omar Shahine is rebuilding Microsoft 365 Copilot in the image of OpenClaw. A preview could land at Build 2026.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://openclawusa.com/blog/microsoft-ocean-11-openclaw-m365-copilot.html">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #0a0a1a;
+  color: #d4d4e0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.7;
+  font-size: 17px;
+}
+a { color: #00d9ff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+nav.sticky {
+  position: sticky;
+  top: 0;
+  background: rgba(10, 10, 26, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+  padding: 16px 24px;
+  z-index: 100;
+}
+nav.sticky .nav-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav.sticky .logo {
+  color: #00d9ff;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+}
+nav.sticky .nav-links a {
+  margin-left: 24px;
+  color: #d4d4e0;
+  font-size: 15px;
+}
+nav.sticky .nav-links a:hover { color: #00d9ff; }
+article {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+}
+.article-header { margin-bottom: 40px; border-bottom: 1px solid rgba(0, 217, 255, 0.15); padding-bottom: 32px; }
+h1 {
+  font-size: 36px;
+  line-height: 1.25;
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+.meta {
+  color: #8a8aa0;
+  font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.meta span::before { content: "• "; color: #00d9ff; margin-right: 4px; }
+.meta span:first-child::before { content: ""; margin-right: 0; }
+article h2 {
+  color: #ffffff;
+  font-size: 24px;
+  margin-top: 36px;
+  margin-bottom: 16px;
+  padding-left: 14px;
+  border-left: 3px solid #00d9ff;
+}
+article p { margin-bottom: 18px; }
+article strong { color: #ffffff; }
+.back-link {
+  display: inline-block;
+  margin-top: 48px;
+  padding: 10px 20px;
+  border: 1px solid #00d9ff;
+  border-radius: 6px;
+  color: #00d9ff;
+  font-size: 15px;
+}
+.back-link:hover { background: rgba(0, 217, 255, 0.1); text-decoration: none; }
+.sources {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(0, 217, 255, 0.15);
+  font-size: 14px;
+  color: #8a8aa0;
+}
+.sources h3 { color: #ffffff; font-size: 16px; margin-bottom: 12px; }
+.sources ul { list-style: none; padding: 0; }
+.sources li { margin-bottom: 6px; }
+footer {
+  border-top: 1px solid rgba(0, 217, 255, 0.15);
+  text-align: center;
+  padding: 24px;
+  color: #6a6a80;
+  font-size: 13px;
+}
+@media (max-width: 640px) {
+  h1 { font-size: 28px; }
+  article h2 { font-size: 20px; }
+  article { padding: 32px 18px 48px; }
+  nav.sticky .nav-links a { margin-left: 14px; font-size: 14px; }
+}
+</style>
+</head>
+<body>
+<nav class="sticky">
+  <div class="nav-inner">
+    <a href="../index.html" class="logo">OpenClaw USA</a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../index.html#blog">Articles</a>
+    </div>
+  </div>
+</nav>
+
+<article>
+  <header class="article-header">
+    <h1>Microsoft's 'Ocean 11' Team Is Building an OpenClaw-Style Agent for Microsoft 365</h1>
+    <div class="meta">
+      <span>April 15, 2026</span>
+      <span>OpenClaw USA Team</span>
+      <span>5 min read</span>
+    </div>
+  </header>
+
+  <p>Microsoft has quietly assembled a small team with a big mandate: rebuild Microsoft 365 Copilot in the image of OpenClaw, the viral open-source agent framework that has captured roughly 356,000 GitHub stars and half a million daily downloads. According to reporting from TechCrunch and Sherwood News this week, the effort is internally known as <strong>"Ocean 11"</strong> — a name that nods to both its small size and its ambition to pull off something audacious inside one of the largest productivity suites on the planet.</p>
+
+  <p>For the roughly 400 million people who open Outlook, Word, or Teams at work each day, this is the clearest sign yet that the kind of always-on, task-taking agent popularized by OpenClaw is coming to the software most American offices already run on.</p>
+
+  <h2>Who Is Leading Ocean 11</h2>
+
+  <p>The team is led by <strong>Omar Shahine</strong>, a longtime Microsoft veteran best known for his previous role overseeing Microsoft Word. Shahine announced the initiative on X on March 31, describing his job not as shipping features but as "building the system that writes functions." That phrasing is telling — it mirrors the way OpenClaw itself is structured, with a core agent loop capable of generating and invoking new tools on the fly rather than relying on a fixed menu of capabilities.</p>
+
+  <p>Reports indicate the team is deliberately kept small, in the mold of OpenClaw creator Peter Steinberger's two-person shop. The stated goal is to build "proactive assistants that assume tasks end-to-end and also intervene when they can help" — language that signals a meaningful departure from today's Copilot, which mostly waits for a user prompt before acting.</p>
+
+  <h2>What the Agent Is Expected to Do</h2>
+
+  <p>Early prototypes, according to people familiar with the work, focus on three patterns that will feel familiar to anyone who has followed OpenClaw:</p>
+
+  <p><strong>Monitoring your inbox and calendar.</strong> The agent is designed to quietly watch Outlook and calendar activity, surface daily task suggestions, and in some cases act on them without requiring a user to open a chat window first.</p>
+
+  <p><strong>Executing multi-step workflows with scoped permissions.</strong> Rather than a single all-powerful assistant, early builds use role-scoped permissions tailored for marketing, sales, and accounting. A sales user's agent could send follow-ups and update records, while a marketing user's agent could draft campaigns and schedule posts — each boxed in by its role.</p>
+
+  <p><strong>Always running, not always chatting.</strong> Perhaps the most significant shift: the agent would be "a version of 365 Copilot that is always working," capable of intervening at any time instead of only when invoked. That is the core OpenClaw experience repackaged for the enterprise.</p>
+
+  <h2>Why Microsoft Is Moving Now</h2>
+
+  <p>OpenClaw's explosive growth over the past two months has caught every major vendor's attention. Tencent, Alibaba Cloud, Moonshot, and Xiaomi have all shipped OpenClaw-compatible products. NVIDIA announced NemoClaw in March, positioning a hardened, enterprise-grade runtime on top of the open-source project. For Microsoft, whose Copilot business is directly in OpenClaw's crosshairs, the calculation is straightforward: either ship something similar, or watch customers bolt a third-party agent onto M365 themselves.</p>
+
+  <p>There is already an early signal of this: a community-built OpenClaw plugin for Microsoft Teams shipped earlier this month, letting OpenClaw agents read and post in Teams channels. Ocean 11 can be read, in part, as Microsoft trying to own that integration layer rather than cede it to the open-source ecosystem.</p>
+
+  <h2>Security, Scope, and the Enterprise Question</h2>
+
+  <p>OpenClaw's biggest obstacle to enterprise adoption has been security. The agent's ability to execute code, call tools, and chain actions autonomously has made CISOs nervous — and that is exactly the gap Microsoft intends to exploit. Ocean 11's output is expected to come with tenant-level controls, audit trails, and the compliance plumbing that open-source OpenClaw deployments typically lack.</p>
+
+  <p>For US businesses already standardized on Microsoft 365, this is the important part. Many IT teams will not approve a raw OpenClaw install touching corporate email. A Microsoft-shipped, OpenClaw-inspired agent sitting inside their existing Copilot license is a very different conversation.</p>
+
+  <h2>When Americans Might See It</h2>
+
+  <p>A real preview is widely expected at <strong>Build 2026</strong>, Microsoft's developer conference in San Francisco this June. Broader rollout is reportedly targeted for the fall, likely as an add-on or upgrade tier to existing Copilot licenses. Nothing has been officially confirmed by Microsoft, and the company has not named Ocean 11 publicly.</p>
+
+  <h2>What It Means for You</h2>
+
+  <p>If you already use OpenClaw on a personal machine, nothing changes — the open-source project continues to move fast, with the 2026.4.10 release adding Active Memory, native Codex support, and local voice just last week. But if you have wanted those capabilities at work and could not install OpenClaw on a locked-down laptop, Microsoft's Ocean 11 may end up being the path that actually reaches your desk. The tradeoff, as always, is openness for guardrails. For a lot of American knowledge workers, that tradeoff is the one that will finally put an always-on agent inside their workday.</p>
+
+  <a href="../index.html#blog" class="back-link">← Back to all articles</a>
+
+  <div class="sources">
+    <h3>Sources</h3>
+    <ul>
+      <li><a href="https://techcrunch.com/2026/04/13/microsoft-is-working-on-yet-another-openclaw-like-agent/">Microsoft is working on yet another OpenClaw-like agent — TechCrunch</a></li>
+      <li><a href="https://sherwood.news/tech/report-microsoft-looks-to-remake-copilot-in-the-image-of-openclaw/">Report: Microsoft looks to remake Copilot in the image of OpenClaw — Sherwood News</a></li>
+      <li><a href="https://thelettertwo.com/2026/04/10/ai-economy-microsoft-brings-openclaw-m365-copilot/">Microsoft Is Working to Bring OpenClaw to M365 Copilot — The Letter Two</a></li>
+      <li><a href="https://techstartups.com/2026/04/13/microsoft-plans-new-copilot-features-inspired-by-openclaw/">Microsoft plans new Copilot features inspired by OpenClaw — Tech Startups</a></li>
+    </ul>
+  </div>
+</article>
+
+<footer>
+  © 2026 OpenClaw USA. Independent news and resources for the US OpenClaw community.
+</footer>
+
+</body>
+</html>
