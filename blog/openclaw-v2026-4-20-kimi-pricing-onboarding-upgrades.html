@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenClaw v2026.4.20: Kimi Pricing, Smarter Onboarding, and Agent Upgrades — OpenClaw USA</title>
+  <meta name="description" content="OpenClaw v2026.4.20 lands with Kimi K2.6 tiered pricing, a cleaner onboarding wizard, stronger GPT-5 defaults, and tighter Control UI — here is what US users should know." />
+  <meta name="keywords" content="OpenClaw v2026.4.20, OpenClaw update April 2026, Kimi K2.6 OpenClaw, OpenClaw onboarding, OpenClaw Control UI, OpenClaw news, AI agent update" />
+  <meta name="author" content="OpenClaw USA Team" />
+  <meta property="og:title" content="OpenClaw v2026.4.20: Kimi Pricing, Smarter Onboarding, and Agent Upgrades" />
+  <meta property="og:description" content="The latest OpenClaw release adds Kimi K2.6 tiered pricing, a refreshed onboarding flow, and stronger agent defaults. Here is what it means for everyday US users." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://openclawusa.com/blog/openclaw-v2026-4-20-kimi-pricing-onboarding-upgrades.html" />
+  <meta property="og:site_name" content="OpenClaw USA" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="OpenClaw v2026.4.20: Kimi Pricing, Smarter Onboarding, and Agent Upgrades" />
+  <meta name="twitter:description" content="The latest OpenClaw release adds Kimi K2.6 tiered pricing, a refreshed onboarding flow, and stronger agent defaults." />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+      background-color: #0a0a1a;
+      color: #e4e4f0;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: #00d9ff; text-decoration: none; transition: opacity 0.2s; }
+    a:hover { opacity: 0.8; text-decoration: underline; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 10, 26, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 217, 255, 0.18);
+      padding: 16px 24px;
+    }
+    .nav-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #fff;
+      letter-spacing: 0.3px;
+    }
+    .nav-logo span { color: #00d9ff; }
+    .nav-links a { margin-left: 22px; color: #c6c6d6; font-size: 0.95rem; }
+    .nav-links a:hover { color: #00d9ff; }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 64px;
+    }
+
+    .article-header {
+      margin-bottom: 36px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(0, 217, 255, 0.15);
+    }
+    .article-category {
+      display: inline-block;
+      font-size: 0.78rem;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: #00d9ff;
+      margin-bottom: 14px;
+    }
+    h1 {
+      font-size: 2.15rem;
+      line-height: 1.25;
+      color: #ffffff;
+      margin-bottom: 18px;
+      letter-spacing: -0.4px;
+    }
+    .meta {
+      font-size: 0.92rem;
+      color: #8b8ba0;
+    }
+    .meta span { margin-right: 14px; }
+    .meta .dot { margin: 0 8px; color: #44445a; }
+
+    article p {
+      margin-bottom: 18px;
+      color: #d6d6e4;
+      font-size: 1.03rem;
+    }
+    article h2 {
+      font-size: 1.4rem;
+      color: #ffffff;
+      margin: 34px 0 14px;
+      padding-left: 14px;
+      border-left: 3px solid #00d9ff;
+      line-height: 1.3;
+    }
+    article ul {
+      margin: 10px 0 20px 22px;
+      color: #d6d6e4;
+    }
+    article li { margin-bottom: 6px; }
+    article strong { color: #fff; }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 10px 18px;
+      border: 1px solid rgba(0, 217, 255, 0.4);
+      border-radius: 6px;
+      color: #00d9ff;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+    .back-link:hover {
+      background: rgba(0, 217, 255, 0.08);
+      text-decoration: none;
+    }
+
+    .sources {
+      margin-top: 36px;
+      padding: 18px 20px;
+      background: rgba(0, 217, 255, 0.04);
+      border-left: 2px solid rgba(0, 217, 255, 0.35);
+      border-radius: 4px;
+      font-size: 0.9rem;
+      color: #a8a8bd;
+    }
+    .sources h3 {
+      font-size: 0.95rem;
+      color: #fff;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .sources a { word-break: break-word; }
+
+    footer {
+      border-top: 1px solid rgba(0, 217, 255, 0.12);
+      padding: 28px 24px;
+      text-align: center;
+      color: #6c6c82;
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 1.65rem; }
+      article h2 { font-size: 1.2rem; }
+      main { padding: 32px 18px 48px; }
+      .nav-links a { margin-left: 14px; font-size: 0.88rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">OpenClaw <span>USA</span></a>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../blog/">Blog</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="article-header">
+      <span class="article-category">News</span>
+      <h1>OpenClaw v2026.4.20: Kimi Pricing, Smarter Onboarding, and Agent Upgrades — What US Users Need to Know</h1>
+      <div class="meta">
+        <span>April 22, 2026</span>
+        <span class="dot">•</span>
+        <span>By OpenClaw USA Team</span>
+        <span class="dot">•</span>
+        <span>5 min read</span>
+      </div>
+    </div>
+
+    <article>
+      <p>OpenClaw has shipped another fast-moving release — and if you have been running the tool for day-to-day work, this is one of the friendlier updates in a while. Version 2026.4.20 lands with added support for Moonshot's Kimi K2.6 model family, a restyled onboarding flow designed for first-time users, stronger default agent behavior, and a handful of Control UI fixes that quietly make the app feel more trustworthy. A follow-on patch, 2026.4.21, shipped within hours to clean up a few remaining rough edges.</p>
+
+      <p>There are no sweeping new features in this cycle. Instead, OpenClaw's maintainers focused on the surfaces people actually touch every day: the setup wizard, the model picker, cost reporting, and the permission prompts that pop up when you reconnect a service. For non-technical US users who have been cautiously trying the tool, that is arguably more valuable than another headline capability.</p>
+
+      <h2>Kimi K2.6 Gets First-Class Pricing</h2>
+
+      <p>The most concrete addition is broader Moonshot Kimi support. OpenClaw now pulls tiered pricing directly from cached model catalogs, and it bundles cost estimates for Kimi K2.6 and K2.5 into the built-in token-usage reports. In practical terms, when you run a long session, the app can finally tell you — in US dollars — how much a Kimi-backed task cost you, instead of leaving you to do the math from raw token counts.</p>
+
+      <p>That matters because Kimi K2.6 has quickly become a popular pick for OpenClaw power users on a budget. It is open-source, competitive on coding tasks, and often a fraction of the cost of frontier US models. Until now, cost visibility was the weakest part of that story. The new tiered pricing lookup closes that gap.</p>
+
+      <h2>A Cleaner, Less Confusing First Run</h2>
+
+      <p>OpenClaw's setup wizard has been a frequent complaint. New installs dropped users into a wall of disclaimers and a blank screen while the model catalog loaded in the background. The 2026.4.20 release rewrites that experience in a few meaningful ways.</p>
+
+      <ul>
+        <li>The security disclaimer is consolidated into a single yellow warning banner with clear section headings and bulleted checklists, rather than a block of dim text.</li>
+        <li>A loading spinner now appears while the initial model catalog fetches, so new users know the app is working rather than frozen.</li>
+        <li>Provider API key fields show a proper placeholder, making it obvious what to paste and where.</li>
+      </ul>
+
+      <p>If you have been meaning to recommend OpenClaw to a less technical friend or coworker, this is the first release where the first 90 seconds of the experience does not feel like a developer tool accidentally left on.</p>
+
+      <h2>Stronger Default Agent Behavior</h2>
+
+      <p>Under the hood, the default system prompt and the GPT-5 overlay both got meaningful upgrades. OpenClaw's agent now leans harder on completion bias — meaning it is more likely to finish a task rather than stop halfway and ask for confirmation. It also checks live state before declaring itself done, watches for weak or low-confidence results, and adds a verification step before producing a final answer.</p>
+
+      <p>For users running multi-step automations — the kind where OpenClaw books something, files something, or edits multiple documents in a row — these are the kinds of changes that reduce the number of "it half-finished and stopped" moments. You probably will not see a flashy new feature. You will notice fewer dead ends.</p>
+
+      <h2>Control UI: Honesty About Permissions</h2>
+
+      <p>The Control UI, which is how you manage OpenClaw's connections to external services, got an important transparency upgrade. When you reconnect a service and OpenClaw requests a broader scope or a role upgrade, the UI now explains what changed and shows both the access it requested and the access that was actually approved. Previously, a broader reconnect could look like a lost pairing, and users sometimes assumed something was broken.</p>
+
+      <p>This is a small change with real implications for trust. OpenClaw is an autonomous agent — knowing exactly what permissions it has on your behalf is not a nice-to-have. It is table stakes, especially as more US users connect OpenClaw to their email, calendar, and payment accounts.</p>
+
+      <h2>Other Notable Fixes</h2>
+
+      <p>The release also improves reliability for cron-scheduled tasks, session recovery, and the gateway layer. Connectors for BlueBubbles, Telegram, and a few OpenAI-compatible providers got sturdier plugin handling. None of these are newsworthy on their own, but taken together, they continue the pattern of quiet quality work that has defined OpenClaw's April cadence.</p>
+
+      <h2>Should You Update?</h2>
+
+      <p>For most US users, the answer is yes — especially if you use Kimi models, onboard other people onto OpenClaw, or rely on it for multi-step work. There are no reported breaking changes, and 2026.4.21 already patched the minor regressions that slipped into the initial release. If you are running a pinned production version with custom plugins, test in a sandbox first, but the upgrade risk here is low.</p>
+
+      <p>OpenClaw's April release cadence has been relentless — this is the fourth meaningful drop in under three weeks. The individual updates are no longer earth-shaking, but collectively they keep pushing the tool from "viral open-source project" toward "software you can actually hand to a colleague." That is the transition US users should be watching.</p>
+
+      <a href="../blog/" class="back-link">← Back to all articles</a>
+
+      <div class="sources">
+        <h3>Sources</h3>
+        <p>
+          <a href="https://github.com/openclaw/openclaw/releases/tag/v2026.4.20" target="_blank" rel="noopener">OpenClaw v2026.4.20 release notes — GitHub</a><br />
+          <a href="https://releasebot.io/updates/openclaw" target="_blank" rel="noopener">OpenClaw Release Notes — Releasebot</a><br />
+          <a href="https://www.roborhythms.com/kimi-k2-6-release/" target="_blank" rel="noopener">Kimi K2.6 release coverage — RoboRhythms</a><br />
+          <a href="https://www.npmjs.com/package/openclaw" target="_blank" rel="noopener">OpenClaw on npm — version history</a>
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    &copy; 2026 OpenClaw USA. Independent coverage of the OpenClaw ecosystem for US readers.
+  </footer>
+</body>
+</html>
