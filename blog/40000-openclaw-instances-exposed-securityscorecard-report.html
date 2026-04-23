@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>40,000 OpenClaw Instances Exposed Online: What US Users Need to Do Right Now | OpenClaw USA</title>
+<meta name="description" content="A new SecurityScorecard report found 40,214 OpenClaw instances publicly accessible on the internet, with 63% vulnerable to remote code execution. Here is what the report says and how US users can stay safe.">
+<meta name="keywords" content="OpenClaw security, SecurityScorecard OpenClaw, OpenClaw exposed, OpenClaw CVE, AI agent security, OpenClaw remote code execution">
+<meta property="og:title" content="40,000 OpenClaw Instances Exposed Online: What US Users Need to Do Right Now">
+<meta property="og:description" content="SecurityScorecard found 40,214 OpenClaw instances exposed on the public internet, with roughly 63% vulnerable to remote takeover. A plain-English guide for US users.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="OpenClaw USA">
+<meta property="og:url" content="https://openclawusa.com/blog/40000-openclaw-instances-exposed-securityscorecard-report.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="40,000 OpenClaw Instances Exposed Online: What US Users Need to Do Right Now">
+<meta name="twitter:description" content="SecurityScorecard found 40,214 OpenClaw instances exposed on the public internet, with roughly 63% vulnerable to remote takeover.">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #0a0a1a;
+    color: #e4e4e8;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+    line-height: 1.7;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: #00d9ff; text-decoration: none; transition: opacity 0.2s; }
+  a:hover { opacity: 0.75; text-decoration: underline; }
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10, 10, 26, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 217, 255, 0.15);
+    padding: 16px 24px;
+  }
+  .nav-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-weight: 700;
+    font-size: 18px;
+    color: #00d9ff;
+    letter-spacing: 0.3px;
+  }
+  .nav-links a {
+    margin-left: 20px;
+    font-size: 15px;
+    color: #e4e4e8;
+  }
+  .nav-links a:hover { color: #00d9ff; }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  .category {
+    display: inline-block;
+    background: rgba(0, 217, 255, 0.12);
+    color: #00d9ff;
+    border: 1px solid rgba(0, 217, 255, 0.3);
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(28px, 5vw, 42px);
+    line-height: 1.2;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    color: #9090a8;
+    font-size: 14px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 32px;
+  }
+  .meta span::before {
+    content: "•";
+    margin-right: 16px;
+    color: #00d9ff;
+  }
+  .meta span:first-child::before { content: ""; margin-right: 0; }
+  article h2 {
+    color: #ffffff;
+    font-size: 24px;
+    margin: 40px 0 16px;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+  }
+  article p { margin-bottom: 20px; color: #d0d0d8; }
+  article ul { margin: 0 0 20px 24px; color: #d0d0d8; }
+  article li { margin-bottom: 8px; }
+  article strong { color: #ffffff; }
+  .callout {
+    background: rgba(0, 217, 255, 0.06);
+    border-left: 3px solid #00d9ff;
+    padding: 18px 22px;
+    margin: 28px 0;
+    border-radius: 0 8px 8px 0;
+    color: #d8d8e0;
+  }
+  .sources {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 14px;
+    color: #9090a8;
+  }
+  .sources h3 {
+    color: #ffffff;
+    font-size: 16px;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .sources ul { list-style: none; margin-left: 0; }
+  .sources li { margin-bottom: 6px; }
+  .back-link {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 12px 20px;
+    background: rgba(0, 217, 255, 0.1);
+    border: 1px solid rgba(0, 217, 255, 0.3);
+    border-radius: 8px;
+    color: #00d9ff;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.2s;
+  }
+  .back-link:hover {
+    background: rgba(0, 217, 255, 0.18);
+    text-decoration: none;
+  }
+  footer {
+    text-align: center;
+    padding: 32px 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: #6a6a80;
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    main { padding: 32px 18px 60px; }
+    article h2 { font-size: 21px; }
+    body { font-size: 16px; }
+    .nav-links a { margin-left: 14px; font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="logo">OpenClaw USA</a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../index.html#blog">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <article>
+    <span class="category">Security News</span>
+    <h1>40,000 OpenClaw Instances Exposed Online: What US Users Need to Do Right Now</h1>
+    <div class="meta">
+      <span>April 23, 2026</span>
+      <span>OpenClaw USA Team</span>
+      <span>5 min read</span>
+    </div>
+
+    <p>A fresh security report this week puts a sharp number on a worry many OpenClaw users have quietly had for months: how many of those "personal AI agents" running at home and at work are actually sitting wide open on the public internet? According to cybersecurity firm SecurityScorecard, a big one — and it lands just as OpenClaw's popularity in the US is accelerating.</p>
+
+    <p>Researchers say they found <strong>40,214 OpenClaw instances reachable from the internet</strong>, across <strong>28,663 unique IP addresses</strong> hosting OpenClaw control panels. Roughly <strong>63% are vulnerable to remote code execution</strong>, meaning a bad actor could take full control of the machine the agent is running on — often without the owner ever clicking a thing.</p>
+
+    <div class="callout">
+      <strong>The short version:</strong> If you run OpenClaw and you have not updated it this month, or you made its web panel reachable from outside your home network, stop and patch before you do anything else today.
+    </div>
+
+    <h2>What the report actually found</h2>
+
+    <p>The research focuses on OpenClaw instances where the management panel — the page where you log in to add skills, connect channels, and watch the agent work — is exposed to the open internet rather than kept behind a firewall or a VPN. Three separate high-severity CVEs are involved, with CVSS scores between 7.8 and 8.8. One of them, <strong>CVE-2026-25253</strong>, was disclosed back in February and allows one-click remote code execution if an attacker can lure a user to a malicious link while their agent is running.</p>
+
+    <p>What makes this disclosure more serious than the usual vulnerability note is that working exploit code is already circulating publicly. That lowers the bar dramatically — an attacker no longer needs deep skills to take advantage of an unpatched instance, only the IP address of an exposed panel.</p>
+
+    <h2>Why this matters for US users</h2>
+
+    <p>OpenClaw's appeal in the US has always been that it puts a real AI agent on your own hardware rather than in someone else's cloud. That autonomy is great for privacy and cost, but it shifts the security responsibility onto the individual. A hosted service has a team patching servers on your behalf; a self-hosted agent does not.</p>
+
+    <p>Several factors make the American install base especially exposed:</p>
+
+    <ul>
+      <li><strong>Home office deployments.</strong> Many US users run OpenClaw on a spare Mac Mini or home server and forward a port so they can use it on the go. Port forwarding without authentication in front of it is the single most common way these instances end up in scans.</li>
+      <li><strong>Small-business pilots.</strong> Teams experimenting with OpenClaw for email triage and scheduling sometimes skip VPN setup because it feels too technical for early testing.</li>
+      <li><strong>Always-on personal agents.</strong> Unlike a chat app you open and close, a personal agent is designed to run 24/7. That means it is online and reachable every hour of every day.</li>
+    </ul>
+
+    <h2>What an attack actually looks like</h2>
+
+    <p>An attacker with an exposed panel's address could push code that runs with the same permissions as the user account hosting the agent. In practical terms, that could mean reading any file the agent can read — emails, browser cookies, notes, anything in connected workspace folders — and, in the worst cases, using the machine as a pivot point into the rest of a home or office network. Because OpenClaw agents often hold credentials for messaging apps, calendars, and note-taking tools, a single compromise can cascade well beyond one device.</p>
+
+    <h2>What to do today</h2>
+
+    <p>The good news is that protecting yourself from this cluster of issues is mostly free and takes a few minutes. The OpenClaw team has issued patches, and all three CVEs are covered in the current stable release.</p>
+
+    <ul>
+      <li><strong>Update to the latest version.</strong> Run the built-in update command or reinstall from the official download. v2026.4.9 added SSRF and node execution hardening after January's ClawHavoc incident; v2026.4.20 adds further fixes.</li>
+      <li><strong>Take the panel off the public internet.</strong> If you do not need remote access, disable port forwarding. If you do, put the panel behind a Tailscale or WireGuard VPN rather than exposing it directly.</li>
+      <li><strong>Turn on password and two-factor authentication</strong> on the panel itself, even at home. Default-open panels are the biggest single risk factor in the SecurityScorecard data.</li>
+      <li><strong>Rotate any tokens</strong> your agent has stored — email, chat, calendar. If the machine has been online and unpatched for a while, assume those secrets could have leaked.</li>
+      <li><strong>Scan your own IP</strong> with a free tool like Shodan's self-check. If your panel shows up publicly, a stranger has already seen it too.</li>
+    </ul>
+
+    <h2>The bigger picture</h2>
+
+    <p>This is the second major security headline for OpenClaw in 2026 after January's ClawHavoc disclosures, and it lands while the project is adding features at a rapid clip. That tension — rapid feature growth versus a rapidly expanding attack surface — is now the defining story of the agentic AI category in the US. NVIDIA's NemoClaw early preview, which bolts policy-based guardrails onto OpenClaw, is one response; VPN-first guidance and stricter installer defaults are another.</p>
+
+    <p>For US users, the practical takeaway is simple: treat your OpenClaw instance the way you would a security camera or router — patch it, do not leave it open to the internet, and keep its secrets on a short leash. The convenience is real. So is the exposure.</p>
+
+    <a href="../index.html#blog" class="back-link">← Back to all articles</a>
+
+    <div class="sources">
+      <h3>Sources</h3>
+      <ul>
+        <li><a href="https://securityscorecard.com/blog/how-exposed-openclaw-deployments-turn-agentic-ai-into-an-attack-surface/" target="_blank" rel="noopener">SecurityScorecard — How Exposed OpenClaw Deployments Turn Agentic AI Into an Attack Surface</a></li>
+        <li><a href="https://www.infosecurity-magazine.com/news/researchers-40000-exposed-openclaw/" target="_blank" rel="noopener">Infosecurity Magazine — Researchers Find 40,000+ Exposed OpenClaw Instances</a></li>
+        <li><a href="https://thehackernews.com/2026/02/openclaw-bug-enables-one-click-remote.html" target="_blank" rel="noopener">The Hacker News — OpenClaw Bug Enables One-Click Remote Code Execution (CVE-2026-25253)</a></li>
+        <li><a href="https://www.sangfor.com/blog/cybersecurity/openclaw-ai-agent-security-risks-2026" target="_blank" rel="noopener">Sangfor — OpenClaw Security Risks: From Vulnerabilities to Supply Chain Abuse</a></li>
+      </ul>
+    </div>
+  </article>
+</main>
+
+<footer>
+  &copy; 2026 OpenClaw USA. Independent news and resources for US OpenClaw users. Not affiliated with the OpenClaw project.
+</footer>
+</body>
+</html>
